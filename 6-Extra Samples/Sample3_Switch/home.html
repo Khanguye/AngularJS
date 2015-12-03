@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<meta charset="UTF-8">
+<!-- user-scalable=no //optional -->
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+
+<title>Angular | Angular works
+ </title>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
+  
+<script src="app.js" ></script>
+</head>
+<body ng-app="myApp">
+<!-- //container-fluid is another option -->
+<div class="container" ng-controller="myCtrl">
+    <label for="viewOnly">View Only</label>
+    <input type="radio" ng-model="layoutTmp" value="viewOnly" id="viewOnly">
+    <label for="viewDetail">View Detail</label>
+    <input type="radio" ng-model="layoutTmp" value="viewDetail" id="viewDetail">
+    <div>Search: <input type=text ng-model="searchText.$" placeholder="enter search text"></div>
+   <div ng-switch="layoutTmp"  >
+       
+           <div ng-switch-when="viewOnly" ng-repeat="user in users | filter: searchText" class="blockDisplay">    
+        <p>User Name:{{user.username}}</p> 
+        <p>{{user.email}}</p>
+        
+   
+           </div>
+       <div ng-switch-when="viewDetail" ng-repeat="user in users | filter: searchText" >    
+        user id : {{user.id}}<br>
+        user email: {{user.email}}<br>
+        user name: {{user.username}} <br>
+        user pwd: {{user.password}} 
+           </div>
+    </div>
+</div>
+
+</body>
+</html>
