@@ -7,21 +7,7 @@ app.controller("myCtrl",function($scope,$http){
     error(function(data,status,headers,config){
         $scope.error="Cannot retrieve data";
     });
-<<<<<<< HEAD
 })
-=======
-});
-/* option replace ng-include */
-app.directive('includeReplace', function () {
-    return {
-        require: 'ngInclude',
-        restrict: 'A', /* optional */
-        link: function (scope, el, attrs) {
-            el.replaceWith(el.children());
-        }
-    };
-});
->>>>>>> New-Features
 /*
 $http.get
 $http.head
