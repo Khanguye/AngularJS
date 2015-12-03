@@ -26,6 +26,7 @@
 <body ng-app="myApp">
 <!-- //container-fluid is another option -->
 <div class="container" ng-controller="myCtrl">
+<<<<<<< HEAD
     <label for="viewOnly">View Only</label>
     <input type="radio" ng-model="layoutTmp" value="viewOnly" id="viewOnly">
     <label for="viewDetail">View Detail</label>
@@ -46,6 +47,30 @@
         user pwd: {{user.password}} 
            </div>
     </div>
+=======
+    <script type="text/ng-template" id="rowHTML">
+        <section>
+            <header><h5>{{user.email}}</h5></header>
+            <p>{{user.username}}</p>
+        </section>       
+    </script>
+    <script type="text/ng-template" id="rowHTML2">
+         <section>
+            <header><h5>{{user.id}}</h5></header>
+             <p>{{user.email}}</p>
+            <p>{{user.username}}</p>
+             <p>{{user.password}}</p>
+        </section>      
+    </script>
+    <div><input type="radio" ng-model="viewMode" value="rowHTML">Simple View</div>
+    <div><input type="radio" ng-model="viewMode" value="rowHTML2">Detail View</div>
+    <div>Search: <input type=text ng-model="searchText.$" placeholder="enter search text"></div>
+   <div ng-switch="viewMode">
+       <div ng-switch-when="rowHTML"><div ng-include="'rowHTML'" ng-repeat="user in users | filter:searchText" include-replace></div></div>
+       <div ng-switch-when="rowHTML2"><div ng-include="'rowHTML2'" ng-repeat="user in users | filter:searchText" include-replace></div></div>
+   </div>
+   
+>>>>>>> New-Features
 </div>
 
 </body>

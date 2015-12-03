@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<meta charset="UTF-8">
+<!-- user-scalable=no //optional -->
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+
+<title>Angular | Angular works
+ </title>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
+  
+<script src="app.js" ></script>
+</head>
+<body ng-app="myApp">
+<!-- //container-fluid is another option -->
+<div class="container" ng-controller="myCtrl">
+    <script type="text/ng-template" id="rowHTML">
+        <!-- showPWD is the local scope $parent.showPWD-->
+        <td><input type="checkbox" ng-model="showPWD"></td>
+        <td>{{user.id}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td><span ng-show="showPWD">{{user.password}}</span></td>
+    </script>
+    <input type="checkbox" ng-model="hideSearch" id="inputText"><label for="inputText">Hide Search</label>
+    <div ng-hide="hideSearch">
+    <label for="inputText">Search:</label><input id="inputText" type="text" ng-model="searchText.$" placeholder="enter search text">
+        </div>
+   <table class="table table-striped table-border table-bordered">
+       <thead>
+           <tr>
+               <!-- showPWD is the global scope -->
+           <td><input type="checkbox" ng-model="showPWD">show Password</td>
+           <td>id</td>
+           <td>email</td>
+           <td>username</td>
+           <td>password</td>
+           </tr>
+       </thead>
+       <tbody>
+           <tr ng-repeat="user in users | filter:searchText" ng-include="'rowHTML'">
+           </tr>
+       </tbody>
+    </table>
+</div>
+
+</body>
+</html>

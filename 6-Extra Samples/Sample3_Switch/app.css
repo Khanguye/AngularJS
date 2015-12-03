@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 .blockDisplay{float: left;
     padding: 5px;
     margin: 0 5px 5px 0;
     width: 32%;
     border: 1px solid red;}
+=======
+section {
+  float: left;
+  margin: 1% 1.5%;
+  width: 30%;
+    border: solid 1px red;
+    padding: 5px;
+}
+>>>>>>> New-Features
