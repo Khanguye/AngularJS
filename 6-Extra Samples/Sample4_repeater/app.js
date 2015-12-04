@@ -8,7 +8,7 @@ app.controller("myCtrl",function($scope,$http){
         $scope.error="Cannot retrieve data";
     });
 
-})
+});
 
 
 /* option replace ng-include */
