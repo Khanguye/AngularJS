@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<meta charset="UTF-8">
+<!-- user-scalable=no //optional -->
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+
+<title>Angular | Angular works
+ </title>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
+  
+<script src="app.js" ></script>
+</head>
+<body ng-app="myApp">
+<!-- //container-fluid is another option -->
+<div class="container" ng-controller="myCtrl" ng-init="viewMode='rowHTML'">
+    <script type="text/ng-template" id="rowHTML">
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.password}}</td>
+    </script>
+    <script type="text/ng-template" id="rowHTML2">
+         
+            <header><h5>{{user.email}}</h5></header>
+            <p>{{user.username}}</p>
+            <p>{{user.password}}</p>
+            
+    </script>
+    <div><input type="radio" ng-model="viewMode" value="rowHTML" >Table View</div>
+    <div><input type="radio" ng-model="viewMode" value="rowHTML2">Block View</div>
+    Search: <input type=text ng-model="searchText" placeholder="enter search text"> Count: {{users.length}}
+    <div ng-switch="viewMode">
+   <table class="table table-striped table-border table-bordered" ng-switch-when="rowHTML">
+       <thead>
+           <tr>
+           <td>email</td>
+           <td>username</td>
+           <td>password</td>
+           </tr>
+       </thead>
+       <tbody>
+           <tr ng-repeat="user in users | filter:searchText" ng-include="'rowHTML'"> 
+           </tr>
+       </tbody>
+    </table>
+   <div ng-switch-when="rowHTML2">
+     <section  ng-repeat="user in users | filter:searchText" ng-include="'rowHTML2'" > 
+      </section> 
+       </div>
+        </div>
+    
+    <div class="clearfix btn btn-default " ng-click="LoadMore()">Next 10</div>
+</div>
+
+</body>
+</html>
