@@ -29,7 +29,9 @@ app.controller("myCtrl",["$scope","$http","$timeout",function($scope,$http,$time
     $scope.$watch("searchText",function(){
        ScrollBottom();
     });
+    
 }]);
+
 /*
 $http.get
 $http.head
